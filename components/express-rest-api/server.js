@@ -4,8 +4,12 @@ const process = require("process");
 
 const app = express();
 
+url_without_slash = process.env.FRONTEND_URL.replace(/\/$/, "");
 var corsOptions = {
-  origin: process.env.FRONTEND_URL
+  origin: [
+    url_without_slash,
+    process.env.FRONTEND_URL
+  ]
 };
 
 app.use(cors(corsOptions));
